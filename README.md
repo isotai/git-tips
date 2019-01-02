@@ -12,8 +12,8 @@ P.S:  `git version 2.7.4 (Apple Git-66)`で動作検証をしています。
 
 <!-- @doxie.inject start toc -->
 <!-- Don’t remove or change the comment above – that can break automatic updates. -->
-* [Git公式の基本的なコマンドのサンプルを表示する](#Git公式の基本的なコマンドのサンプルを表示する)
-* [Git公式のヘルプを表示する](#Git公式のヘルプを表示する)
+* [GIT公式の基本的なコマンドのサンプルを表示する](#GIT公式の基本的なコマンドのサンプルを表示する)
+* [GIT公式のヘルプを表示する](#GIT公式のヘルプを表示する)
 * [コミットメッセージからコミットを検索する](#コミットメッセージからコミットを検索する)
 * [リモートブランチと同期してローカルの変更を上書きする](#リモートブランチと同期してローカルの変更を上書きする)
 * [特定のコミット時点で管理されている全ファイルを表示する](#特定のコミット時点で管理されている全ファイルを表示する)
@@ -44,7 +44,7 @@ P.S:  `git version 2.7.4 (Apple Git-66)`で動作検証をしています。
 * [ローカルとリモートの全部ランチを表示する](#ローカルとリモートの全部ランチを表示する)
 * [リモートのブランチを表示する](#リモートのブランチを表示する)
 * [ファイル全体ではなく、ファイル中の一部変更点だけをステージングする](#ファイル全体ではなく、ファイル中の一部変更点だけをステージングする)
-* [gitの補完機能をインストールする](#gitの補完機能をインストールする)
+* [GITの補完機能をインストールする](#GITの補完機能をインストールする)
 * [直近２週間の変更点を表示する](#直近２週間の変更点を表示する)
 * [masterからforkした時点よりあとのコミット履歴を表示](#masterからforkした時点よりあとのコミット履歴を表示)
 * [コミットを別のブランチにcherry-pickする](#コミットを別のブランチにcherry-pickする)
@@ -52,23 +52,23 @@ P.S:  `git version 2.7.4 (Apple Git-66)`で動作検証をしています。
 * [エイリアスを作成する](#エイリアスを作成する)
 * [前回コミットからの変更を一時保存する](#前回コミットからの変更を一時保存する)
 * [前回コミットからの変更のうち、ステージングされていない変更を一時保存する](#前回コミットからの変更のうち、ステージングされていない変更を一時保存する)
-* [前回コミットからの変更をgit管理されていないファイルの変更も含めて一時保管する](#前回コミットからの変更をgit管理されていないファイルの変更も含めて一時保管する)
-* [前回コミットからの変更を名前をつけて一時保管する](#前回コミットからの変更を名前をつけて一時保管する)
-* [前回コミットからの変更を全て一時保存する(ignoredしている、git管理されていない、git管理されている)](#前回コミットからの変更を全て一時保存する(ignoredしている、git管理されていない、git管理されている))
+* [前回コミットからの変更をGit管理されていないファイルの変更も含めて一時保存する](#前回コミットからの変更をGit管理されていないファイルの変更も含めて一時保存する)
+* [前回コミットからの変更を名前をつけて一時保存する](#前回コミットからの変更を名前をつけて一時保存する)
+* [前回コミットからの変更を全て一時保存する(ignoredしている、Git管理されていない、Git管理されている)](#前回コミットからの変更を全て一時保存する(ignoredしている、Git管理されていない、Git管理されている))
 * [現在保存されているstashを表示する](#現在保存されているstashを表示する)
 * [stashリストから削除せずに変更を適用する](#stashリストから削除せずに変更を適用する)
 * [最後のstashを適用し、適用したstashは削除する](#適用したstashは削除する)
 * [stashを全て削除する](#stashを全て削除する)
 * [stashから1ファイルだけ取り出す](#stashから1ファイルだけ取り出す)
-* [git管理しているファイルを全て表示する](#git管理しているファイルを全て表示する)
-* [git管理していないファイルを全て表示する](#show-all-untracked-files)
-* [gitignoreで無視しているファイルを全て表示する](#gitignoreで無視しているファイルを全て表示する)
-* [リポジトリーからワーキングツリーを作成する (git 2.5)](#リポジトリーからワーキングツリーを作成する-(git 2.5))
+* [Git管理しているファイルを全て表示する](#Git管理しているファイルを全て表示する)
+* [Git管理していないファイルを全て表示する](#show-all-untracked-files)
+* [Gitignoreで無視しているファイルを全て表示する](#Gitignoreで無視しているファイルを全て表示する)
+* [リポジトリーからワーキングツリーを作成する (Git 2.5)](#リポジトリーからワーキングツリーを作成する-(Git 2.5))
 * [HEADからワーキングツリーを作成する](#HEADからワーキングツリーを作成する)
 * [ファイルをGit管理下から外す。ファイルは削除しない](#ファイルをGit管理下から外す。ファイルは削除しない)
-* [git管理していないファイル/ディレクトリを削除する前に、ドライランで削除される対象を表示する](#git管理していないファイル/ディレクトリを削除する前に、ドライランで削除される対象を表示する)
-* [git管理していないファイルを強制削除する](#git管理していないファイルを強制削除する)
-* [git管理していないディレクトリーを強制削除する](#git管理していないディレクトリーを強制削除する)
+* [Git管理していないファイル/ディレクトリを削除する前に、ドライランで削除される対象を表示する](#Git管理していないファイル/ディレクトリを削除する前に、ドライランで削除される対象を表示する)
+* [Git管理していないファイルを強制削除する](#Git管理していないファイルを強制削除する)
+* [Git管理していないディレクトリーを強制削除する](#Git管理していないディレクトリーを強制削除する)
 * [全てのサブモジュールをアップデートする](#全てのサブモジュールをアップデートする)
 * [現在のブランチでmasterにマージされていないコミットを表示する](#現在のブランチでmasterにマージされていないコミットを表示する)
 * [ブランチ名を変更する](#ブランチ名を変更する)
@@ -91,24 +91,24 @@ P.S:  `git version 2.7.4 (Apple Git-66)`で動作検証をしています。
 * [現在のブランチの一番直近のタグを表示する](#現在のブランチの一番直近のタグを表示する)
 * [単語単位のdiffを表示する](#単語単位のdiffを表示する)
 * [一般的なdiffツールで変更を表示する](#一般的なdiffツールで変更を表示する)
-* [git管理しているファイルの変更を無視する](#git管理しているファイルの変更を無視する)
+* [Git管理しているファイルの変更を無視する](#Git管理しているファイルの変更を無視する)
 * [assume-unchangedを無効にする](#unchangedを無効にする)
-* [.gitignoreに記載があるファイルを削除する](#.gitignoreに記載があるファイルを削除する)
+* [.gitignoreに記載があるファイルを削除する](#.Gitignoreに記載があるファイルを削除する)
 * [削除したファイルを元に戻す](#削除したファイルを元に戻す)
 * [特定のコミットハッシュまでファイルを戻す](#特定のコミットハッシュまでファイルを戻す)
 * [pullしたときにmergeではなくrebaseするよう変更する](#pullしたときにmergeではなくrebaseするよう変更する)
 * [全てのコンフィグとエイリアスの一覧を表示する](#全てのコンフィグとエイリアスの一覧を表示する)
-* [ファイル名の大文字小文字変更を検知するように変更する](#make-git-case-sensitive)
-* [カスタムエディターを追加する](#add-custom-editors)
-* [誤字を自動修正する](#auto-correct-typos)
-* [指定のハッシュが、どのブランチにいるかを表示する](#check-if-the-change-was-a-part-of-a-release)
-* [ドライラン(ドライランをサポートしているコマンドに対して実行できる)](#dry-run-any-command-that-supports-dry-run-flag-should-do)
-* [コミットを前回のコミットの修正としてマークする](#marks-your-commit-as-a-fix-of-a-previous-commit)
+* [ファイル名の大文字小文字変更を検知するように変更する](#ファイル名の大文字小文字変更を検知するように変更する)
+* [カスタムエディターを追加する](#カスタムエディターを追加する)
+* [誤字を自動修正する](#誤字を自動修正する)
+* [指定のハッシュが、どのブランチにいるかを表示する](#指定のハッシュが、どのブランチにいるかを表示する)
+* [ドライラン(ドライランをサポートしているコマンドに対して実行できる)](#ドライラン(ドライランをサポートしているコマンドに対して実行できる))
+* [コミットを前回のコミットの修正としてマークする](#コミットを前回のコミットの修正としてマークする)
 * [rebase時に上記のコミット順を隣に並べ替えてわかりやすくする](#rebase時に上記のコミット順を隣に並べ替えてわかりやすくする)
 * [指定したファイルだけコミットする](#指定したファイルだけコミットする)
 * [インタラクティブにステージングする](#インタラクティブにステージングする)
-* [gitが無視しているファイルを表示する](#gitが無視しているファイルを表示する)
-* [gitが無視しているファイルのステータスを表示する](#gitが無視しているファイルのステータスを表示する)
+* [Gitが無視しているファイルを表示する](#Gitが無視しているファイルを表示する)
+* [Gitが無視しているファイルのステータスを表示する](#Gitが無視しているファイルのステータスを表示する)
 * [Branch1には入っていて、Branch2に入っていないコミットを表示する](#Branch1には入っていて、Branch2に入っていないコミットを表示する)
 * [直近n個のコミットログを表示する](#直近n個のコミットログを表示する)
 * [コンフリクトの解決法を記録してお、今後同じ理由でのコンフリクトが見つかったら同じ方法で自動的に解決する](#コンフリクトの解決法を記録してお、今後同じ理由でのコンフリクトが見つかったら同じ方法で自動的に解決する)
@@ -132,7 +132,7 @@ P.S:  `git version 2.7.4 (Apple Git-66)`で動作検証をしています。
 * [ターミナルの出力に色を付けない](#ターミナルの出力に色を付けない)
 * [ターミナルの出力の色設定を個別に変更する](#ターミナルの出力の色設定を個別に変更する)
 * [ローカルブランチを新しい順に表示する](#ローカルブランチを新しい順に表示する)
-* [文字列か正規表現でgit管理下のファイルの行を検索する](#文字列か正規表現でgit管理下のファイルの行を検索する)
+* [文字列か正規表現でGit管理下のファイルの行を検索する](#文字列か正規表現でGit管理下のファイルの行を検索する)
 * [最新のリポジトリだけcloneする](#最新のリポジトリだけcloneする)
 * [指定の文字で全てのブランチのコミットログを検索する](#指定の文字で全てのブランチのコミットログを検索する)
 * [masterから指定のブランチに向けての最初のコミットを表示する](#masterから指定のブランチに向けての最初のコミットを表示する)
@@ -150,21 +150,21 @@ P.S:  `git version 2.7.4 (Apple Git-66)`で動作検証をしています。
 * [全てのオブジェクトノートを表示する](#全てのオブジェクトノートを表示する)
 * [別のリポジトリからコミットを適用する](#別のリポジトリからコミットを適用する)
 * [特定のリモートブランチからfetchする](#特定のリモートブランチからfetchする)
-* [2ブランチから共通の祖先を見付ける](#2ブランチから共通の祖先を見付ける)
+* [2つのブランチから共通の祖先を見付ける](#2つのブランチから共通の祖先を見付ける)
 * [pushしてないコミットを表示する](#pushしてないコミットを表示する)
 * [空白以外の変更をapplyする](#空白以外の変更をapplyする)
-* [ローカル/グローバルのgitコンフィグを編集する](#ローカル/グローバルのgitコンフィグを編集する)
+* [ローカル/グローバルのgitコンフィグを編集する](#ローカル/グローバルのGitコンフィグを編集する)
 * [指定範囲内をblameする](#指定範囲内をblameする)
-* [git変数を表示する](#git変数を表示する)
+* [Git変数を表示する](#Git変数を表示する)
 * [整形済みのパッチを作成する](#整形済みのパッチを作成する)
 * [リポジトリのルート絶対パスを取得する](#リポジトリのルート絶対パスを取得する)
 * [特定期間のログを表示する](#特定期間のログを表示する)
 * [指定者以外のログを表示する](#指定者以外のログを表示する)
 * [ペンディング中の変更のまとめを作成](#ペンディング中の変更のまとめを作成)
 * [リモートリポジトリのブランチを表示する](#リモートリポジトリのブランチを表示する)
-* [git管理していないファイルをバックアップする](#git管理していないファイルをバックアップする)
+* [Git管理していないファイルをバックアップする](#Git管理していないファイルをバックアップする)
 * [エイリアスを一覧表示する](#エイリアスを一覧表示する)
-* [git statusを簡潔に表示する](#statusを簡潔に表示する)
+* [git statusを簡潔に表示する](#git-statusを簡潔に表示する)
 * [昨日のコミットをチェックアウトする](#昨日のコミットをチェックアウトする)
 * [ローカルブランチをリモートリポジトリにpushして追跡する](#ローカルブランチをリモートリポジトリにpushして追跡する)
 * [ブランチのベースを変更する](#ブランチのベースを変更する)
@@ -227,7 +227,7 @@ git diff --cached
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git diff --staged
 ```
@@ -248,7 +248,7 @@ git checkout -
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git checkout @{-1}
 ```
@@ -259,7 +259,7 @@ git branch --merged master | grep -v '^\*' | xargs -n 1 git branch -d
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git branch --merged master | grep -v '^\*\|  master' | xargs -n 1 git branch -d # will not delete master if master is not checked out
 ```
@@ -285,7 +285,7 @@ git push origin --delete <remote_branchname>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git push origin :<remote_branchname>
 ```
@@ -330,7 +330,7 @@ git cherry -v master
 git commit --amend --author='Author Name <email@address.com>'
 ```
 
-## R直前のコミットの実行者をデフォルト値にリセットする
+## 直前のコミットの実行者をデフォルト値にリセットする
 ```sh
 git commit --amend --reset-author --no-edit
 ```
@@ -346,7 +346,7 @@ git remote
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git remote show
 ```
@@ -377,7 +377,7 @@ git log --no-merges --raw --since='2 weeks ago'
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git whatchanged --since='2 weeks ago'
 ```
@@ -398,7 +398,7 @@ git branch -a --contains <commit-ish>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git branch --contains <commit-ish>
 ```
@@ -415,7 +415,7 @@ git stash
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git stash save
 ```
@@ -426,7 +426,7 @@ git stash -k
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git stash --keep-index
 ```
@@ -436,13 +436,13 @@ git stash --keep-index
 git stash save --keep-index
 ```
 
-## 前回コミットからの変更をgit管理されていないファイルの変更も含めて一時保管する
+## 前回コミットからの変更をgit管理されていないファイルの変更も含めて一時保存する
 ```sh
 git stash -u
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git stash save -u
 ```
@@ -452,7 +452,7 @@ git stash save -u
 git stash save --include-untracked
 ```
 
-## 前回コミットからの変更を名前をつけて一時保管する
+## 前回コミットからの変更を名前をつけて一時保存する
 ```sh
 git stash save <message>
 ```
@@ -463,7 +463,7 @@ git stash -a
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git stash --all
 ```
@@ -489,7 +489,7 @@ git stash pop
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git stash apply stash@{0} && git stash drop stash@{0}
 ```
@@ -500,7 +500,7 @@ git stash clear
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git stash drop <stash@{n}>
 ```
@@ -511,17 +511,17 @@ git checkout <stash@{n}> -- <file_path>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git checkout stash@{0} -- <file_path>
 ```
 
-## git管理しているファイルを全て表示する
+## Git管理しているファイルを全て表示する
 ```sh
 git ls-files -t
 ```
 
-## git管理していないファイルを全て表示する
+## Git管理していないファイルを全て表示する
 ```sh
 git ls-files --others
 ```
@@ -547,22 +547,22 @@ git rm --cached <file_path>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git rm --cached -r <directory_path>
 ```
 
-## git管理していないファイル/ディレクトリを削除する前に、ドライランで削除される対象を表示する
+## Git管理していないファイル/ディレクトリを削除する前に、ドライランで削除される対象を表示する
 ```sh
 git clean -n
 ```
 
-## git管理していないファイルを強制削除する
+## Git管理していないファイルを強制削除する
 ```sh
 git clean -f
 ```
 
-## forcefully-remove-untracked-directory
+## Git管理していないディレクトリーを強制削除する
 ```sh
 git clean -f -d
 ```
@@ -573,7 +573,7 @@ git submodule foreach git pull
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git submodule update --init --recursive
 ```
@@ -589,7 +589,7 @@ git cherry -v master
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git cherry -v master <branch-to-be-merged>
 ```
@@ -600,7 +600,7 @@ git branch -m <new-branch-name>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git branch -m [<old-branch-name>] <new-branch-name>
 ```
@@ -626,7 +626,7 @@ git fetch -p
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git remote prune origin
 ```
@@ -637,7 +637,7 @@ git remote prune origin
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git rev-list --max-parents=0 HEAD
 ```
@@ -658,7 +658,7 @@ git log --pretty=oneline --graph --decorate --all
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 gitk --all
 ```
@@ -719,7 +719,7 @@ git fetch origin pull/<id>/head:<branch-name>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git pull origin pull/<id>/head:<branch-name>
 ```
@@ -739,7 +739,7 @@ git diff --word-diff
 git difftool [-t <tool>] <commit1> <commit2> <path>
 ```
 
-## git管理しているファイルの変更を無視する
+## Git管理しているファイルの変更を無視する
 ```sh
 git update-index --assume-unchanged <file_name>
 ```
@@ -770,7 +770,7 @@ git config --global pull.rebase true
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 #git < 1.7.9
 git config --global branch.autosetuprebase always
@@ -826,12 +826,12 @@ git commit --only <file_path>
 git add -i
 ```
 
-## gitが無視しているファイルを表示する
+## Gitが無視しているファイルを表示する
 ```sh
 git check-ignore *
 ```
 
-## gitが無視しているファイルのステータスを表示する
+## Gitが無視しているファイルのステータスを表示する
 ```sh
 git status --ignored
 ```
@@ -847,7 +847,7 @@ git log -<n>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git log -n <n>
 ```
@@ -944,7 +944,7 @@ git checkout -b <branch-name>
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git branch <branch-name> && git checkout <branch-name>
 ```
@@ -969,7 +969,7 @@ git config --global <specific command e.g branch, diff> <true, false or always>
 git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/
 ```
 
-## 文字列か正規表現でgit管理下のファイルの行を検索する
+## 文字列か正規表現でGit管理下のファイルの行を検索する
 ```sh
 git grep --heading --line-number 'foo bar'
 ```
@@ -990,7 +990,7 @@ git log --oneline master..<branch-name> | tail -1
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git log --reverse master..<branch-name> | head -6
 ```
@@ -1032,7 +1032,7 @@ git log --author='_Your_Name_Here_' --pretty=tformat: --numstat | gawk '{ add +=
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git log --author='_Your_Name_Here_' --pretty=tformat: --numstat | awk '{ add += <!-- @doxie.inject start -->; subs += <!-- @doxie.inject end -->; loc += <!-- @doxie.inject start --> - <!-- @doxie.inject end --> } END { printf "added lines: %s, removed lines: %s, total lines: %s
 ", add, subs, loc }' - # on Mac OSX
@@ -1073,7 +1073,7 @@ git --git-dir=<source-dir>/.git format-patch -k -1 --stdout <SHA1> | git am -3 -
 git fetch origin master:refs/remotes/origin/mymaster
 ```
 
-## 2ブランチから共通の祖先を見付ける
+## 2つのブランチから共通の祖先を見付ける
 ```sh
 diff -u <(git rev-list --first-parent BranchA) <(git rev-list --first-parent BranchB) | sed -ne 's/^ //p' | head -1
 ```
@@ -1084,7 +1084,7 @@ git log --branches --not --remotes
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git log @{u}..
 ```
@@ -1099,7 +1099,7 @@ git cherry -v
 git diff --ignore-all-space | git apply --cached
 ```
 
-## ローカル/グローバルのgitコンフィグを編集する
+## ローカル/グローバルのGitコンフィグを編集する
 ```sh
 git config [--global] --edit
 ```
@@ -1109,7 +1109,7 @@ git config [--global] --edit
 git blame -L <start>,<end>
 ```
 
-## git変数を表示する
+## Git変数を表示する
 ```sh
 git var -l | <variable>
 ```
@@ -1145,7 +1145,7 @@ git request-pull v1.0 https://git.ko.xz/project master:for-linus
 git ls-remote git://git.kernel.org/pub/scm/git/git.git
 ```
 
-## git管理していないファイルをバックアップする
+## Git管理していないファイルをバックアップする
 ```sh
 git ls-files --others -i --exclude-standard | xargs zip untracked.zip
 ```
@@ -1156,7 +1156,7 @@ git config -l | grep alias | sed 's/^alias\.//g'
 ```
 
 
-__Alternatives:__
+__その他の方法:__
 ```sh
 git config -l | grep alias | cut -d '.' -f 2
 ```
